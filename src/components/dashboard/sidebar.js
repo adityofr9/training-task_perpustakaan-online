@@ -1,30 +1,40 @@
 import React from 'react';
+import { NavLink } from "react-router-dom";
 
 // Import Component
-import { Navbar } from "./navbar.js";
+// import { Navbar } from "./navbar.js";
 
 // Export Functional Component
 export { Sidebar };
 
 function Sidebar() {
     return(
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
-            <div class="position-sticky pt-3">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">
-                        Dashboard
-                        </a>
+        <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-md-block sidebar collapse">
+            <div className="position-sticky pt-3">
+                <ul className="nav flex-column">
+                    <li className="nav-item">
+                        <NavLink className="nav-link" to="/" style={
+                            // Styling for active link
+                            ({ isActive }) => ({background: isActive ? 'rgba(145, 31, 39, 0.5)' : ''})
+                        }>
+                            Dashboard
+                        </NavLink>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                        Data Buku
-                        </a>
+                    <li className="nav-item">
+                        <NavLink className="nav-link" to="/books" style={
+                            // Styling for active link
+                            ({ isActive }) => ({background: isActive ? 'rgba(145, 31, 39, 0.5)' : ''})
+                        }>
+                            Data Buku
+                        </NavLink>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                        Transaksi
-                        </a>
+                    <li className="nav-item">
+                        <NavLink className="nav-link" to="/transaction" style={
+                            // Styling for active link
+                            ({ isActive }) => ({background: isActive ? 'rgba(145, 31, 39, 0.5)' : ''})
+                        }>
+                            Transaksi
+                        </NavLink>
                     </li>
                 </ul>
             </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import './login.css';
 
 // Export Functional Component
@@ -24,7 +25,9 @@ function Login() {
                                 <label for="floatingPassword">Password</label>
                             </div>
                             <hr className="my-4"/>
-                            <button className="w-100 mb-2 btn btn-lg btn-danger rounded-3" type="submit">LOGIN</button>
+                            <Link to="/" >
+                                <button className="w-100 mb-2 btn btn-lg btn-danger rounded-3" type="submit">LOGIN</button>
+                            </Link>
                         </form>
                     </div>
                 </div>

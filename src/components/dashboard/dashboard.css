@@ -46,8 +46,9 @@ header {
     color: #333;
 }
 
-.sidebar .nav-link.active {
+.sidebar .nav-link:active {
     color: #911F27;
+    background-color: rgba(145, 31, 39, 0.5);
 }
 
 .sidebar-heading {
@@ -72,15 +73,4 @@ header {
 
 .navbar .form-control {
     padding: .75rem 1rem;
-}
-
-.form-control-dark {
-    color: #fff;
-    background-color: rgba(255, 255, 255, .1);
-    border-color: rgba(255, 255, 255, .1);
-}
-
-.form-control-dark:focus {
-    border-color: transparent;
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
 }
