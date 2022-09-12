@@ -36,6 +36,12 @@ function Sidebar() {
                             Transaksi
                         </NavLink>
                     </li>
+                    {/* Sidebar Toggle */}
+                    {/* <li className='nav-item'>
+                        <button className="navbar-toggler position-absolute collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="true" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
+                        </button>
+                    </li> */}
                 </ul>
             </div>
         </nav>

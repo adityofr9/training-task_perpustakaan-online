@@ -58,6 +58,17 @@ header {
 /*
 * Navbar
 */
+.navbar-nav .logout {
+    padding: 12px 0;
+}
+.navbar-nav a {
+    color: white;
+
+}
+
+.navbar-nav a:hover {
+    background-color: rgba(0, 0, 0, .25);
+}
 
 .navbar-brand {
     padding-top: .75rem;
