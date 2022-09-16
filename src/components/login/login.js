@@ -18,11 +18,11 @@ function Login() {
                         <form className="">
                             <div className="form-floating mb-3">
                                 <input type="email" className="form-control rounded-3" id="floatingInput" placeholder="name@example.com" required />
-                                <label for="floatingInput">Email address</label>
+                                <label htmlFor="floatingInput">Email address</label>
                             </div>
                             <div className="form-floating mb-3">
                                 <input type="password" className="form-control rounded-3" id="floatingPassword" placeholder="Password" required />
-                                <label for="floatingPassword">Password</label>
+                                <label htmlFor="floatingPassword">Password</label>
                             </div>
                             <hr className="my-4"/>
                             <Link to="/" >

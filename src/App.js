@@ -7,8 +7,8 @@ import {
 } from "react-router-dom";
 
 // Import Component
-import { Home } from "./components/dashboard/home.js";
-import { Login } from "./components/login/login.js";
+import { Home } from "./components/dashboard/home";
+import { Login } from "./components/login/login";
 
 function App() {
   return (
