@@ -1,0 +1,30 @@
+{
+  "books": [
+    {
+      "title": "Learning React: Functional Web Development with React and Redux 1st Edition",
+      "author": "Alex Banks, Eve Porcella",
+      "publisher": "O'Reilly Media",
+      "yearPubc": "2017",
+      "typeBook": "Computers & Technology",
+      "source": "Brand New",
+      "oldBook": "no",
+      "bookshelf": "Technology",
+      "status": "Tersedia",
+      "inputDate": "2022-09-22",
+      "id": 1
+    },
+    {
+      "title": "Ikigai: The Japanese Secret to a Long and Happy Life",
+      "author": "Hector Garcia, Francesc Miralles",
+      "publisher": "Penguin Books",
+      "yearPubc": "2016",
+      "typeBook": "Self-Help",
+      "source": "Collection",
+      "oldBook": "no",
+      "bookshelf": "Philosophy & Psychology",
+      "status": "Tersedia",
+      "inputDate": "2022-09-22",
+      "id": 2
+    }
+  ]
+}
