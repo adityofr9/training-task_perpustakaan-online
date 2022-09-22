@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 // Import slice
-import { saveBook } from "../../../features/booksSlice";
+import { getBooks, booksSelectors, updateBook } from "../../../features/booksSlice";
 
 // Import Book Options Array
 import { optionsType, optionsShelf } from "./optionsBook";
 
-export { AddBooks };
+export { EditBooks };
 
-function AddBooks() {
+function EditBooks() {
     const [title, setTitle] = useState('')
     const [author, setAuthor] = useState('')
     const [publisher, setPublisher] = useState('')
@@ -21,26 +21,50 @@ function AddBooks() {
     const [bookshelf, setBookshelf] = useState('')
     const [status] = useState('Tersedia')
     const [inputDate, setInputDate] = useState('')
+    
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    
+    let {id} = useParams()
 
-    const createBook = async (e) => {
+    const book = useSelector((state) => booksSelectors.selectById(state, id));
+
+    useEffect(() => {
+        dispatch(getBooks())
+    },[dispatch])
+    
+    useEffect(() => {
+        if (book) {
+            setTitle(book.title);
+            setAuthor(book.author);
+            setPublisher(book.publisher);
+            setYearPubc(book.yearPubc);
+            setTypeBook(book.typeBook);
+            setSource(book.source);
+            setOldBook(book.oldBook);
+            setBookshelf(book.bookshelf);
+            setInputDate(book.inputDate);
+        }
+    },[book])
+
+    const handleUpdate = async (e) => {
         e.preventDefault();
-        const paramBook = { title, author, publisher, yearPubc, typeBook, source, oldBook, bookshelf, status, inputDate};
-        await dispatch(saveBook(paramBook));
+        console.log(title)
+        console.log(id)
+        const paramBook = { id, title, author, publisher, yearPubc, typeBook, source, oldBook, bookshelf, status, inputDate};
+        await dispatch(updateBook(paramBook));
         navigate('/books')
     }
 
     // Variable for get number of this year
     let thisYear = new Date().getFullYear();
-
+    
     return (
         <>
             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 className="h2">Form Input Buku</h1>
             </div>
-            {/* onSubmit={addBookData} */}
-            <form onSubmit={createBook} className="row g-3 col-10 mx-auto">
+            <form onSubmit={handleUpdate} className="row g-3 col-10 mx-auto">
                 <div className="col-12">
                     <label htmlFor="inputTitle" className="form-label">Book Title</label>
                     <input type="text" className="form-control border-danger border-opacity-25" id="inputTitle" 
@@ -73,7 +97,7 @@ function AddBooks() {
                 <div className="col-md-5">
                     <label htmlFor="inputBookType" className="form-label">Book Type</label>
                     <select id="inputBookType" className="form-select border-danger border-opacity-25"
-                    defaultValue={""}
+                    value={typeBook}
                     onChange={(e) => setTypeBook(e.target.value)}
                     required>
                         <option value="" disabled>Choose Book Type</option>
@@ -92,7 +116,7 @@ function AddBooks() {
                 </div>
                 <div className="col-md-2">
                     <label htmlFor="inlineRadio" className="form-label">Old Book</label>
-                    <div className="mt-1" onChange={(e) => setOldBook(e.target.value)}>
+                    <div className="mt-1" value={oldBook} onChange={(e) => setOldBook(e.target.value)}>
                         <div className=" form-check form-check-inline">
                             <input className="form-check-input" type="radio" name="radioOptions" id="inlineRadioYes" value="yes" required/>
                                 <label className="form-check-label" htmlFor="inlineRadioYes">Yes</label>
@@ -106,7 +130,7 @@ function AddBooks() {
                 <div className="col-md-6">
                     <label htmlFor="inputBookshelf" className="form-label">Bookshelf</label>
                     <select id="inputBookshelf" className="form-select border-danger border-opacity-25"
-                    defaultValue={""}
+                    value={bookshelf}
                     onChange={(e) => setBookshelf(e.target.value)}
                     required>
                         <option value="" disabled>Choose Bookshelf</option>
