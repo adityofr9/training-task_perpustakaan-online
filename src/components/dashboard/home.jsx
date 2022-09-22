@@ -9,6 +9,7 @@ import { Dashboard } from "./dashboard";
 import { Books } from "./books/books";
 import { Transaction } from "./transaction/transaction";
 import { AddBooks } from './books/addBooks';
+import { EditBooks } from './books/editBooks';
 import { AddTransaction } from './transaction/addTransaction';
 
 // Export Functional Component
@@ -29,6 +30,7 @@ function Home() {
                             <Route path="/"  element={<Dashboard />}/>
                             <Route path="/books"  element={<Books />}/>
                             <Route path="/books/add"  element={<AddBooks />}/>
+                            <Route path="/books/edit/:id"  element={<EditBooks />}/>
                             <Route path="/transaction" element={<Transaction />}/>
                             <Route path="/transaction/add"  element={<AddTransaction />}/>
                         </Routes>

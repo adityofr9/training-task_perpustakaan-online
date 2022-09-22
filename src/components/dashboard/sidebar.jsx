@@ -16,7 +16,7 @@ function Sidebar() {
                         <NavLink className="nav-link" to="/" style={
                             // Styling for active link
                             ({ isActive }) => ({background: isActive ? 'rgba(145, 31, 39, 0.5)' : ''})
-                        }>
+                        } end>
                             Dashboard
                         </NavLink>
                     </li>
