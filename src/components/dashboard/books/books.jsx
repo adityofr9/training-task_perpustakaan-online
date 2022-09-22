@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import { useDispatch } from 'react-redux';
+import { getBooks } from '../../../features/booksSlice';
 import { Link } from "react-router-dom";
 
 // Import CSS
@@ -11,6 +13,13 @@ import { TableBooks } from "./tableBooks";
 export { Books };
 
 function Books() {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getBooks())
+    },[dispatch]
+    );
+
     return(
         <>
             {/* Title Content */}
@@ -18,7 +27,7 @@ function Books() {
                 <h1 className="h2">Data Buku</h1>
             </div>
             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-                <form className="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto" role="search">
+                <form className="col-auto col-lg-auto mb-2 mb-lg-0 me-lg-auto" role="search">
                     <input type="search" className="form-control" placeholder="Search..." aria-label="Search" />
                 </form>
                 {/* Link Add Button */}
