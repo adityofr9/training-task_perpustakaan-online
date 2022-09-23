@@ -49,8 +49,6 @@ function EditBooks() {
 
     const handleUpdate = async (e) => {
         e.preventDefault();
-        console.log(title)
-        console.log(id)
         const paramBook = { id, title, author, publisher, yearPubc, typeBook, source, oldBook, bookshelf, status, inputDate};
         await dispatch(updateBook(paramBook));
         navigate('/books')
@@ -64,6 +62,8 @@ function EditBooks() {
             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 className="h2">Form Input Buku</h1>
             </div>
+
+            {/* Form Update */}
             <form onSubmit={handleUpdate} className="row g-3 col-10 mx-auto">
                 <div className="col-12">
                     <label htmlFor="inputTitle" className="form-label">Book Title</label>

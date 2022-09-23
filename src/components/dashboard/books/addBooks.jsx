@@ -94,11 +94,11 @@ function AddBooks() {
                     <label htmlFor="inlineRadio" className="form-label">Old Book</label>
                     <div className="mt-1" onChange={(e) => setOldBook(e.target.value)}>
                         <div className=" form-check form-check-inline">
-                            <input className="form-check-input" type="radio" name="radioOptions" id="inlineRadioYes" value="yes" required/>
+                            <input className="form-check-input" type="radio" name="radioOptions" id="inlineRadioYes" value="Yes" required/>
                                 <label className="form-check-label" htmlFor="inlineRadioYes">Yes</label>
                         </div>
                         <div className="form-check form-check-inline">
-                            <input className="form-check-input" type="radio" name="radioOptions" id="inlineRadioNo" value="no"/>
+                            <input className="form-check-input" type="radio" name="radioOptions" id="inlineRadioNo" value="No"/>
                                 <label className="form-check-label" htmlFor="inlineRadioNo">No</label>
                         </div>
                     </div>

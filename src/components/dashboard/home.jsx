@@ -7,9 +7,10 @@ import { Navbar } from "./navbar";
 import { Sidebar } from "./sidebar";
 import { Dashboard } from "./dashboard";
 import { Books } from "./books/books";
-import { Transaction } from "./transaction/transaction";
+import { DetailBooks } from "./books/detailBooks";
 import { AddBooks } from './books/addBooks';
 import { EditBooks } from './books/editBooks';
+import { Transaction } from "./transaction/transaction";
 import { AddTransaction } from './transaction/addTransaction';
 
 // Export Functional Component
@@ -29,6 +30,7 @@ function Home() {
                         <Routes>
                             <Route path="/"  element={<Dashboard />}/>
                             <Route path="/books"  element={<Books />}/>
+                            <Route path="/books/:id"  element={<DetailBooks />}/>
                             <Route path="/books/add"  element={<AddBooks />}/>
                             <Route path="/books/edit/:id"  element={<EditBooks />}/>
                             <Route path="/transaction" element={<Transaction />}/>
