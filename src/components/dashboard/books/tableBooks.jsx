@@ -25,7 +25,7 @@ function TableBooks() {
                 {/* Conditional rendering for checking is Book data exists */}
                 {(books.length > 0)
                 ? <tbody>
-                    {books.map((book, index) => (
+                    {books.reverse().map((book, index) => (
                         <tr key={book.id}>
                             <th scope="row">{index + 1}</th>
                             <td>{book.title}</td>
