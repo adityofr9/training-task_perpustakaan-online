@@ -9,9 +9,16 @@ import { DeletePopup } from '../../deletePopup';
 // Export Functional Component
 export { TableBooks };
 
-function TableBooks() {
+function TableBooks({searchValue}) {
     const dispatch = useDispatch();
     const books = useSelector(booksSelectors.selectAll);
+
+    const searchFilter = books.filter(book => 
+        book.title.toLowerCase().includes(searchValue)
+        || book.author.toLowerCase().includes(searchValue)
+        || book.typeBook.toLowerCase().includes(searchValue)
+    )
+    // console.log(`searchFilter`, ...searchFilter);
 
     // State for popup
     const [popup, setPopup] = useState({
@@ -39,27 +46,38 @@ function TableBooks() {
         }
     };
 
+    // Function for validate the search value to return book data
+    const datas = () => {
+        if (searchValue === null) {
+            return books
+        } else {
+            return searchFilter
+        }
+    }
+
     return(
         <>
             <table className="table table-bordered">
-                <thead className="table-light">
+                <thead className="table-light text-center">
                     <tr>
                     <th scope="col">No</th>
                     <th scope="col">Book Title</th>
                     <th scope="col">Author</th>
+                    <th scope="col">Type Book</th>
                     <th scope="col">Status</th>
                     <th scope="col">Actions</th>
                     </tr>
                 </thead>
 
                 {/* Conditional rendering for checking is Book data exists */}
-                {(books.length > 0)
-                ? <tbody>
-                    {books.map((book, index) => (
+                {(books.length > 0 && searchFilter.length > 0)
+                ? <tbody className='align-middle'>
+                    {datas().map((book, index) => (
                         <tr key={book.id}>
                             <th scope="row">{index + 1}</th>
                             <td>{book.title}</td>
                             <td>{book.author}</td>
+                            <td>{book.typeBook}</td>
                             <td>
                                 {/* Conditional rendering for Status Book based on book.status */}
                                 {(book.status === "Tersedia" || book.status === undefined) 
@@ -89,14 +107,16 @@ function TableBooks() {
                         </tr>
                     ))}
                 </tbody>
-                // Conditional rendering if Book Data is empty
+                
+                // Conditional rendering if the Book data is empty or not found
                 :<tbody>
                     <tr>
-                        <td colSpan={5} className="text-center"><b>Data is empty!</b></td>
+                        <td colSpan={6} className="text-center"><b>Data is not found!</b></td>
                     </tr>
                 </tbody>
                 }
             </table>
+
             {/* Modal Popup Component for delete data */}
             {popup && <DeletePopup handleDeleteTrue={handleDeleteTrue} title={popup.paramBook}/>}
         </>

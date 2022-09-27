@@ -15,10 +15,22 @@ export { Books };
 
 function Books() {
     const dispatch = useDispatch()
+
+    // State for search Book data
+    const [searchBook, setSearchBook] = useState('')
+    
+    // Function for handle any change value on input search
+    const handleSearch = async (e) => {
+        const {value} = e.target
+        setSearchBook(value)
+    }
+    
+    // This will make searchBook value to lower case
+    let searchValue = searchBook.toLowerCase();
     
     // State for show component
     const [show, setShow] = useState(false)
-
+    
     // Asynchronous funtion for loading component
     const load = async () => {
         const promise = new Promise ((resolve, reject) => {
@@ -36,6 +48,7 @@ function Books() {
     },[dispatch])
 
 
+    // Conditional Rendering for loading component
     if (!show) {
         return <Loading/>
     } else {
@@ -47,15 +60,16 @@ function Books() {
                 </div>
                 <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
                     <form className="col-auto col-lg-auto mb-2 mb-lg-0 me-lg-auto" role="search">
-                        <input type="search" className="form-control" placeholder="Search..." aria-label="Search" />
+                        <input type="search" className="form-control" placeholder="Search..." aria-label="Search" onChange={(e) => handleSearch(e)} />
                     </form>
                     {/* Link Add Button */}
                     <Link to="/books/add" >
                         <button type="button" className="btn btn-outline-danger">Add Books</button>
                     </Link>
                 </div>
+
                 {/* Table Content */}
-                <TableBooks />
+                <TableBooks searchValue={searchValue}/>
             </>
         )
     }
