@@ -7,6 +7,7 @@ import { getBooks, booksSelectors, deleteBook } from "../../../features/booksSli
 
 // Import Component
 import { Loading } from "../../loading";
+import { DeletePopup } from '../../deletePopup';
 
 export { DetailBooks };
 
@@ -20,6 +21,7 @@ function DetailBooks() {
 
     // State for show component
     const [show, setShow] = useState(false)
+    const [data, setdata] = useState(book)
 
     // Asynchronous funtion for loading component
     const load = async () => {
@@ -31,6 +33,33 @@ function DetailBooks() {
         })
         await promise
     }
+
+
+    // State for popup
+    const [popup, setPopup] = useState({
+        show: false,
+        id: null,
+    });
+
+    // This will show the Cofirmation Box
+    const handleDelete = (book) => {
+        setPopup({
+            show: true,
+            paramBook: book.title,
+            id: book.id,
+        });
+    };
+    
+    // This will perform the deletion
+    const handleDeleteTrue = () => {
+        if (popup.show && popup.id) {
+            dispatch(deleteBook(popup.id))
+            setPopup({
+                show: false,
+                id: null,
+            });
+        }
+    };
 
     useEffect(() => {
         dispatch(getBooks())
@@ -77,7 +106,9 @@ function DetailBooks() {
                     {(book.status === "Tersedia" || book.status === undefined )
                     ?
                     <div className="ms-3">
-                        <Link onClick={() => dispatch(deleteBook(book.id))} type="button" className="btn btn-outline-danger">Delete</Link>
+                        <Link onClick={() => handleDelete(book)} type="button" className="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            Delete
+                        </Link>
                     </div>
                     : null}
                 </div>
@@ -136,10 +167,14 @@ function DetailBooks() {
                             {/* Conditional rendering for Status Book based on book.status */}
                             {(book.status === "Tersedia" || book.status === undefined) 
                             ? <span className="badge text-bg-success fs-6">Tersedia</span>
-                            : <span className="badge text-bg-danger fs-6">Dipinjam</span>}
+                            : <span className="badge text-bg-danger fs-6">Dipinjam</span>
+                            }
                         </div>
                     </div>
                 </div>
+                
+                {/* Modal Popup Component for delete data */}
+                {popup && <DeletePopup handleDeleteTrue={handleDeleteTrue} title={popup.paramBook}/>}
             </>
         );
     }

@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
 import { booksSelectors, deleteBook } from '../../../features/booksSlice';
+
+// Import Component
+import { DeletePopup } from '../../deletePopup';
 
 // Export Functional Component
 export { TableBooks };
@@ -9,6 +12,33 @@ export { TableBooks };
 function TableBooks() {
     const dispatch = useDispatch();
     const books = useSelector(booksSelectors.selectAll);
+
+    // State for popup
+    const [popup, setPopup] = useState({
+        show: false,
+        id: null,
+    });
+
+    // This will show the Cofirmation Box
+    const handleDelete = (book) => {
+        setPopup({
+            show: true,
+            paramBook: book.title,
+            id: book.id,
+        });
+    };
+    
+    // This will perform the deletion
+    const handleDeleteTrue = () => {
+        if (popup.show && popup.id) {
+            dispatch(deleteBook(popup.id))
+            setPopup({
+                show: false,
+                id: null,
+            });
+        }
+    };
+
     return(
         <>
             <table className="table table-bordered">
@@ -25,7 +55,7 @@ function TableBooks() {
                 {/* Conditional rendering for checking is Book data exists */}
                 {(books.length > 0)
                 ? <tbody>
-                    {books.reverse().map((book, index) => (
+                    {books.map((book, index) => (
                         <tr key={book.id}>
                             <th scope="row">{index + 1}</th>
                             <td>{book.title}</td>
@@ -50,7 +80,10 @@ function TableBooks() {
                                 {/* Link Delete with conditional rendering based on book.status */}
                                 {(book.status === "Tersedia" || book.status === undefined )
                                 ?
-                                <Link onClick={() => dispatch(deleteBook(book.id))}>Delete</Link>
+                                // <Link onClick={() => dispatch(deleteBook(book.id))}>Delete</Link>
+                                <Link onClick={() => handleDelete(book)} data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                    Delete
+                                </Link>
                                 : null}
                             </td>
                         </tr>
@@ -64,6 +97,8 @@ function TableBooks() {
                 </tbody>
                 }
             </table>
+            {/* Modal Popup Component for delete data */}
+            {popup && <DeletePopup handleDeleteTrue={handleDeleteTrue} title={popup.paramBook}/>}
         </>
     )
 }

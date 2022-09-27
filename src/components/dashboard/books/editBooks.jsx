@@ -19,7 +19,6 @@ function EditBooks() {
     const [source, setSource] = useState('')
     const [oldBook, setOldBook] = useState('')
     const [bookshelf, setBookshelf] = useState('')
-    const [status] = useState('Tersedia')
     const [inputDate, setInputDate] = useState('')
     
     const dispatch = useDispatch()
@@ -49,7 +48,7 @@ function EditBooks() {
 
     const handleUpdate = async (e) => {
         e.preventDefault();
-        const paramBook = { id, title, author, publisher, yearPubc, typeBook, source, oldBook, bookshelf, status, inputDate};
+        const paramBook = { id, title, author, publisher, yearPubc, typeBook, source, oldBook, bookshelf, inputDate};
         await dispatch(updateBook(paramBook));
         navigate('/books')
     }
@@ -116,13 +115,13 @@ function EditBooks() {
                 </div>
                 <div className="col-md-2">
                     <label htmlFor="inlineRadio" className="form-label">Old Book</label>
-                    <div className="mt-1" value={oldBook} onChange={(e) => setOldBook(e.target.value)}>
+                    <div className="mt-1" value={oldBook}>
                         <div className=" form-check form-check-inline">
-                            <input className="form-check-input" type="radio" name="radioOptions" id="inlineRadioYes" value="Yes" checked={oldBook === "Yes"} required/>
+                            <input className="form-check-input" type="radio" name="radioOptions" id="inlineRadioYes" value="Yes" checked={oldBook === "Yes"}  onChange={(e) => setOldBook(e.target.value)} required/>
                                 <label className="form-check-label" htmlFor="inlineRadioYes">Yes</label>
                         </div>
                         <div className="form-check form-check-inline">
-                            <input className="form-check-input" type="radio" name="radioOptions" id="inlineRadioNo" value="No" checked={oldBook === "No"}/>
+                            <input className="form-check-input" type="radio" name="radioOptions" id="inlineRadioNo" value="No" checked={oldBook === "No"}  onChange={(e) => setOldBook(e.target.value)}/>
                                 <label className="form-check-label" htmlFor="inlineRadioNo">No</label>
                         </div>
                     </div>
