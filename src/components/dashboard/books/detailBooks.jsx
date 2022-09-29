@@ -4,6 +4,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 
 // Import slice
 import { getBooks, booksSelectors, deleteBook } from "../../../features/booksSlice";
+import { alertAction } from "../../../features/alertsSlice";
 
 // Import Component
 import { Loading } from "../../loading";
@@ -21,7 +22,6 @@ function DetailBooks() {
 
     // State for show component
     const [show, setShow] = useState(false)
-    const [data, setdata] = useState(book)
 
     // Asynchronous funtion for loading component
     const load = async () => {
@@ -54,6 +54,13 @@ function DetailBooks() {
     const handleDeleteTrue = () => {
         if (popup.show && popup.id) {
             dispatch(deleteBook(popup.id))
+            // Action for alert state when success delete book data
+            dispatch(
+                alertAction.createAlert({
+                    message: "Successfully Deleted Book Data!",
+                    type: "danger"
+                })
+            );
             setPopup({
                 show: false,
                 id: null,
@@ -76,8 +83,7 @@ function DetailBooks() {
     
     // This work but stil got error
     if (!book) {
-        navigate('/books')
-        return
+        return navigate('/books')
     }
 
     if (!show) {

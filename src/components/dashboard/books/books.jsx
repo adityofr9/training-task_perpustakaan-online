@@ -9,6 +9,7 @@ import '../dashboard.css';
 // Import Component
 import { TableBooks } from "./tableBooks";
 import { Loading } from "../../loading";
+import { AlertMsg } from '../../alert/alert';
 
 // Export Functional Component
 export { Books };
@@ -54,16 +55,17 @@ function Books() {
     } else {
         return(
             <>
+                <AlertMsg/>
                 {/* Title Content */}
                 <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 className="h2">Data Buku</h1>
                 </div>
                 <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-                    <form className="col-auto col-lg-auto mb-2 mb-lg-0 me-lg-auto" role="search">
-                        <input type="search" className="form-control" placeholder="Search..." aria-label="Search" onChange={(e) => handleSearch(e)} />
+                    <form className="mb-2 mb-lg-0" role="search" style={{width: '280px'}}>
+                        <input type="search" className="form-control" placeholder="Search by title, author, type book" aria-label="Search" onChange={(e) => handleSearch(e)} />
                     </form>
                     {/* Link Add Button */}
-                    <Link to="/books/add" >
+                    <Link to="/books/add" className='col-auto' >
                         <button type="button" className="btn btn-outline-danger">Add Books</button>
                     </Link>
                 </div>

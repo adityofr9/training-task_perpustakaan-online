@@ -4,6 +4,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 
 // Import slice
 import { getBooks, booksSelectors, updateBook } from "../../../features/booksSlice";
+import { alertAction } from "../../../features/alertsSlice";
 
 // Import Book Options Array
 import { optionsType, optionsShelf } from "./optionsBook";
@@ -50,6 +51,13 @@ function EditBooks() {
         e.preventDefault();
         const paramBook = { id, title, author, publisher, yearPubc, typeBook, source, oldBook, bookshelf, inputDate};
         await dispatch(updateBook(paramBook));
+        // Action for alert state when success edit book data
+        await dispatch(
+            alertAction.createAlert({
+                message: "Successfully Edited Book Data!",
+                type: "success"
+            })
+        );
         navigate('/books')
     }
 

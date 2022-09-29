@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 // Import slice
 import { saveBook } from "../../../features/booksSlice";
+import { alertAction } from "../../../features/alertsSlice";
 
 // Import Book Options Array
 import { optionsType, optionsShelf } from "./optionsBook";
@@ -28,6 +29,13 @@ function AddBooks() {
         e.preventDefault();
         const paramBook = { title, author, publisher, yearPubc, typeBook, source, oldBook, bookshelf, status, inputDate};
         await dispatch(saveBook(paramBook));
+        // Action for alert state when success input book data
+        await dispatch(
+            alertAction.createAlert({
+                message: "Successfully Input Book Data!",
+                type: "success"
+            })
+        );
         navigate('/books')
     }
 
