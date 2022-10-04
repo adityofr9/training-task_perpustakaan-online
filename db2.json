@@ -11,7 +11,6 @@
       "bookshelf": "Technology",
       "status": "Tersedia",
       "inputDate": "2022-09-19",
-      "trsId": "",
       "id": 1
     },
     {
@@ -25,7 +24,6 @@
       "bookshelf": "Technology",
       "status": "Tersedia",
       "inputDate": "2022-09-19",
-      "trsId": "",
       "id": 2
     },
     {
@@ -39,7 +37,6 @@
       "bookshelf": "Technology",
       "status": "Tersedia",
       "inputDate": "2022-09-19",
-      "trsId": "",
       "id": 3
     },
     {
@@ -53,7 +50,6 @@
       "bookshelf": "Philosophy & Psychology",
       "status": "Tersedia",
       "inputDate": "2022-09-20",
-      "trsId": "",
       "id": 4
     },
     {
@@ -67,7 +63,6 @@
       "bookshelf": "Philosophy & Psychology",
       "status": "Tersedia",
       "inputDate": "2022-10-04",
-      "trsId": "",
       "id": 5
     },
     {
@@ -81,7 +76,6 @@
       "bookshelf": "Comics & Novels",
       "status": "Tersedia",
       "inputDate": "2022-09-24",
-      "trsId": "",
       "id": 6
     },
     {
@@ -95,7 +89,6 @@
       "bookshelf": "Comics & Novels",
       "status": "Tersedia",
       "inputDate": "2022-09-24",
-      "trsId": "",
       "id": 7
     },
     {
@@ -109,7 +102,6 @@
       "bookshelf": "Comics & Novels",
       "status": "Tersedia",
       "inputDate": "2022-09-22",
-      "trsId": "",
       "id": 8
     }
   ],
