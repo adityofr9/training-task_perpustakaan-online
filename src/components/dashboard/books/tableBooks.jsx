@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 // Import Slice
 import { booksSelectors, deleteBook } from '../../../features/booksSlice';
+import { deleteTransaction } from '../../../features/transactionsSlice';
 import { alertAction } from "../../../features/alertsSlice";
 
 // Import Component
@@ -16,18 +17,31 @@ function TableBooks({searchValue}) {
     const dispatch = useDispatch();
     const books = useSelector(booksSelectors.selectAll);
 
+    // Filtering data based on key by matching the search value
     const searchFilter = books.filter(book => 
         book.title.toLowerCase().includes(searchValue)
         || book.author.toLowerCase().includes(searchValue)
         || book.typeBook.toLowerCase().includes(searchValue)
     )
-    // console.log(`searchFilter`, ...searchFilter);
 
-    // State for popup
+    // Function for validate the search value to return book data
+    const datas = () => {
+        if (searchValue === null) {
+            return books
+        } else {
+            return searchFilter
+        }
+    }
+
+
+    // Initial State for popup
     const [popup, setPopup] = useState({
         show: false,
         id: null,
-    });
+    })
+
+    // Initial State for transaction
+    const [transaction, setTransaction] = useState('')
 
     // This will show the Cofirmation Box
     const handleDelete = (book) => {
@@ -35,13 +49,22 @@ function TableBooks({searchValue}) {
             show: true,
             paramBook: book.title,
             id: book.id,
-        });
-    };
+        })
+        if (book.trsId) {
+            setTransaction(book.trsId)
+        }
+    }
     
     // This will perform the deletion
     const handleDeleteTrue = () => {
         if (popup.show && popup.id) {
             dispatch(deleteBook(popup.id))
+            if (transaction) {
+                transaction.forEach(a => {
+                    console.log(a);
+                    dispatch(deleteTransaction(a))
+                })
+            }
             // Action for alert state when success delete book data
             dispatch(
                 alertAction.createAlert({
@@ -55,15 +78,6 @@ function TableBooks({searchValue}) {
             });
         }
     };
-
-    // Function for validate the search value to return book data
-    const datas = () => {
-        if (searchValue === null) {
-            return books
-        } else {
-            return searchFilter
-        }
-    }
 
     return(
         <>
@@ -94,14 +108,14 @@ function TableBooks({searchValue}) {
                                 ? <span className="badge text-bg-success">Tersedia</span>
                                 : <span className="badge text-bg-danger">Dipinjam</span>}
                             </td>
-                            <td>
+                            <td className='text-center'>
                                 {/* Link Detail */}
-                                <Link to={`/books/${book.id}`} className="me-1 text-decoration-none" >
+                                <Link to={`/books/${book.id}`} className="me-1 text-decoration-none d-sm-block d-md-block d-lg-inline" >
                                     Detail
                                 </Link>
 
                                 {/* Link Edit */}
-                                <Link to={`/books/edit/${book.id}`} className="me-1 text-decoration-none" >
+                                <Link to={`/books/edit/${book.id}`} className="me-1 text-decoration-none d-sm-block d-md-block d-lg-inline" >
                                     Edit
                                 </Link>
 
@@ -109,7 +123,7 @@ function TableBooks({searchValue}) {
                                 {(book.status === "Tersedia" || book.status === undefined )
                                 ?
                                 // <Link onClick={() => dispatch(deleteBook(book.id))}>Delete</Link>
-                                <Link onClick={() => handleDelete(book)} data-bs-toggle="modal" data-bs-target="#staticBackdrop" className='text-decoration-none'>
+                                <Link onClick={() => handleDelete(book)} data-bs-toggle="modal" data-bs-target="#staticBackdrop" className='text-decoration-none d-sm-block d-md-block d-lg-inline'>
                                     Delete
                                 </Link>
                                 : null}
