@@ -11,7 +11,25 @@
       "bookshelf": "Philosophy & Psychology",
       "status": "Dipinjam",
       "inputDate": "2022-09-22",
-      "id": 2
+      "id": 2,
+      "transaction": [
+        {
+          "idTr": 1,
+          "borrowerName": "Alpha",
+          "borrowerAge": "18",
+          "borrowDate": "2022-09-29",
+          "returnEstimate": "2022-10-06",
+          "returnedDate": ""
+        },
+        {
+          "idTr": 2,
+          "borrowerName": "Delta",
+          "borrowerAge": "27",
+          "borrowDate": "2022-09-26",
+          "returnEstimate": "2022-10-03",
+          "returnedDate": "2022-09-29"
+        }
+      ]
     },
     {
       "title": "Learning React: Functional Web Development with React and Redux 1st Edition",
@@ -24,7 +42,22 @@
       "bookshelf": "Technology",
       "status": "Tersedia",
       "inputDate": "2022-09-26",
-      "id": 3
+      "id": 3,
+      "transaction": []
+    },
+    {
+      "title": "React in Action",
+      "author": "Mark Tielens Thomas",
+      "publisher": "Manning",
+      "yearPubc": "2018",
+      "typeBook": "Computers & Technology",
+      "source": "",
+      "oldBook": "No",
+      "bookshelf": "Technology",
+      "status": "Tersedia",
+      "inputDate": "2022-09-29",
+      "id": 4,
+      "transaction": []
     }
   ]
 }

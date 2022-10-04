@@ -7,7 +7,7 @@ import { getBooks, booksSelectors, updateBook } from "../../../features/booksSli
 import { alertAction } from "../../../features/alertsSlice";
 
 // Import Book Options Array
-import { optionsType, optionsShelf } from "./optionsBook";
+import { optionsType, optionsShelf } from "../../../utils/optionsBook";
 
 export { EditBooks };
 
@@ -67,7 +67,7 @@ function EditBooks() {
     return (
         <>
             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 className="h2">Form Input Buku</h1>
+                <h1 className="h2">Book Edit Form</h1>
             </div>
 
             {/* Form Update */}

@@ -25,7 +25,7 @@ function Sidebar() {
                             // Styling for active link
                             ({ isActive }) => ({background: isActive ? 'rgba(145, 31, 39, 0.5)' : ''})
                         }>
-                            Data Buku
+                            Book Data
                         </NavLink>
                     </li>
                     <li className="nav-item">
@@ -33,7 +33,7 @@ function Sidebar() {
                             // Styling for active link
                             ({ isActive }) => ({background: isActive ? 'rgba(145, 31, 39, 0.5)' : ''})
                         }>
-                            Transaksi
+                            Transaction
                         </NavLink>
                     </li>
                     {/* Sidebar Toggle */}

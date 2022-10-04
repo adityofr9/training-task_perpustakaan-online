@@ -1,15 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import { useDispatch } from 'react-redux';
-import { getBooks } from '../../../features/booksSlice';
 import { Link } from "react-router-dom";
 
-// Import CSS
-import '../dashboard.css';
+// Import Slice
+import { getBooks } from '../../../features/booksSlice';
 
 // Import Component
 import { TableBooks } from "./tableBooks";
 import { Loading } from "../../loading";
-import { AlertMsg } from '../../alert/alert';
+import { AlertMsg } from '../../alert';
 
 // Export Functional Component
 export { Books };
@@ -58,7 +57,7 @@ function Books() {
                 <AlertMsg/>
                 {/* Title Content */}
                 <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 className="h2">Data Buku</h1>
+                    <h1 className="h2">Book Data</h1>
                 </div>
                 <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
                     <form className="mb-2 mb-lg-0" role="search" style={{width: '280px'}}>

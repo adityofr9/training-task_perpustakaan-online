@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { alertAction } from "../../features/alertsSlice";
+import { alertAction } from "../features/alertsSlice";
 
 // Export Functional Component
 export { AlertMsg };
@@ -32,8 +32,8 @@ function AlertMsg() {
             alertAction.deleteAlert()
         );
     },[dispatch])
-    console.log("ini alerts", ...alerts.alert);
-    console.log("kalau ini alert",alert);
+    // console.log("ini alerts", ...alerts.alert);
+    // console.log("kalau ini alert",alert);
 
     // Set alert state after button close was clicked
     const onClose = () => {

@@ -7,7 +7,7 @@ import { saveBook } from "../../../features/booksSlice";
 import { alertAction } from "../../../features/alertsSlice";
 
 // Import Book Options Array
-import { optionsType, optionsShelf } from "./optionsBook";
+import { optionsType, optionsShelf } from "../../../utils/optionsBook";
 
 export { AddBooks };
 
@@ -22,12 +22,14 @@ function AddBooks() {
     const [bookshelf, setBookshelf] = useState('')
     const [status] = useState('Tersedia')
     const [inputDate, setInputDate] = useState('')
+    const [trsId] = useState('')
+    
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const createBook = async (e) => {
         e.preventDefault();
-        const paramBook = { title, author, publisher, yearPubc, typeBook, source, oldBook, bookshelf, status, inputDate};
+        const paramBook = { title, author, publisher, yearPubc, typeBook, source, oldBook, bookshelf, status, inputDate, trsId};
         await dispatch(saveBook(paramBook));
         // Action for alert state when success input book data
         await dispatch(
@@ -45,9 +47,10 @@ function AddBooks() {
     return (
         <>
             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 className="h2">Form Input Buku</h1>
+                <h1 className="h2">Book Input Form</h1>
             </div>
-            {/* onSubmit={addBookData} */}
+            
+            {/* Form Input */}
             <form onSubmit={createBook} className="row g-3 col-10 mx-auto">
                 <div className="col-12">
                     <label htmlFor="inputTitle" className="form-label">Book Title</label>

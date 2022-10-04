@@ -1,6 +1,7 @@
 // Variable for options of input select type book
 export const optionsType = [
     "Arts & Photography",
+    "Adventures",
     "Biographies & Memoirs",
     "Business & Money",
     "Children's Books",
@@ -10,11 +11,12 @@ export const optionsType = [
     "Crafts, Hobbies & Home",
     "Education & Teaching",
     "Engineering & Transportation",
+    "Fiction",
     "Health, Fitness & Dieting",
     "History",
     "Humor & Entertainment",
     "Law",
-    "Literature & Fiction",
+    "Literature",
     "Medical Books",
     "Mystery, Thriller & Suspense",
     "Parenting & Relationships",
@@ -40,6 +42,7 @@ export const optionsShelf = [
     "Science",
     "Technology",
     "Art & Recreation",
+    "Comics & Novels",
     "Literature",
     "History & Geography"
 ];
