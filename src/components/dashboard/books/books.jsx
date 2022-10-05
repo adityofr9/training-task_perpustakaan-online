@@ -44,6 +44,7 @@ function Books() {
 
     useEffect(() => {
         dispatch(getBooks())
+        // Callback Function Load
         load()
     },[dispatch])
 

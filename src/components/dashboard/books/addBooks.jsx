@@ -20,16 +20,15 @@ function AddBooks() {
     const [source, setSource] = useState('')
     const [oldBook, setOldBook] = useState('')
     const [bookshelf, setBookshelf] = useState('')
-    const [status] = useState('Tersedia')
+    const [status] = useState('Available')
     const [inputDate, setInputDate] = useState('')
-    const [trsId] = useState('')
     
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const createBook = async (e) => {
         e.preventDefault();
-        const paramBook = { title, author, publisher, yearPubc, typeBook, source, oldBook, bookshelf, status, inputDate, trsId};
+        const paramBook = { title, author, publisher, yearPubc, typeBook, source, oldBook, bookshelf, status, inputDate};
         await dispatch(saveBook(paramBook));
         // Action for alert state when success input book data
         await dispatch(

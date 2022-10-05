@@ -8,7 +8,7 @@ import { estimateMin } from "../../../utils/fake-backend";
 // Import Slice
 import { getBooks, updateBook, booksSelectors } from '../../../features/booksSlice';
 import { saveTransaction } from "../../../features/transactionsSlice";
-// import { alertAction } from "../../../features/alertsSlice";
+import { alertAction } from "../../../features/alertsSlice";
 
 // Export the component
 export { AddTransaction };
@@ -38,7 +38,7 @@ function AddTransaction() {
     },[dispatch])
 
     // Filtering available book data based on book status
-    const availableBook = useSelector(booksSelectors.selectAll).filter(book => book.status === "Tersedia")
+    const availableBook = useSelector(booksSelectors.selectAll).filter(book => book.status === "Available")
 
     // Conditional when book id has been selected
     if (bookId) {
@@ -64,7 +64,7 @@ function AddTransaction() {
     useEffect(() => {
         if (bookId) {
             setId(selectedBook[0].id)
-            setStatus("Dipinjam")
+            setStatus("Borrowed")
         }
     }, [bookId, selectedBook])
     
@@ -78,12 +78,13 @@ function AddTransaction() {
         dispatch(updateBook(updateBookStatus));
         
         // Action for alert state when success input book data
-        // await dispatch(
-        //     alertAction.createAlert({
-        //         message: "Successfully Input Book Data!",
-        //         type: "success"
-        //     })
-        // );
+        await dispatch(
+            alertAction.createAlert({
+                message: "Successfully Input Transaction Data!",
+                type: "success"
+            })
+        );
+        
         navigate('/transaction')
     }
     
@@ -97,7 +98,7 @@ function AddTransaction() {
                 <label htmlFor="inputTitle" className="form-label">Book Title</label>
                 <select id="inputTitle" className="form-select border-danger border-opacity-25"
                 defaultValue={""}
-                onChange={(e) => setBookId(e.target.value)}
+                onChange={(e) => setBookId(parseInt(e.target.value))}
                 required>
                     <option value="" disabled>Choose Book Title</option>
                     {/* Transforming options array into lists of option elements */}

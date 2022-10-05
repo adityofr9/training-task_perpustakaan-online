@@ -109,7 +109,7 @@ function DetailBooks() {
                     </div>
 
                     {/* Link Delete with conditional rendering based on book.status */}
-                    {(book.status === "Tersedia" || book.status === undefined )
+                    {(book.status === "Available" || book.status === undefined )
                     ?
                     <div className="ms-3">
                         <Link onClick={() => handleDelete(book)} type="button" className="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -171,9 +171,9 @@ function DetailBooks() {
                         <div className="col-lg-1 col-1 fw-semibold">:</div>
                         <div className="col-lg-9 col-8">
                             {/* Conditional rendering for Status Book based on book.status */}
-                            {(book.status === "Tersedia" || book.status === undefined) 
-                            ? <span className="badge text-bg-success fs-6">Tersedia</span>
-                            : <span className="badge text-bg-danger fs-6">Dipinjam</span>
+                            {(book.status === "Available" || book.status === undefined) 
+                            ? <span className="badge text-bg-success fs-6">Available</span>
+                            : <span className="badge text-bg-danger fs-6">Borrowed</span>
                             }
                         </div>
                     </div>

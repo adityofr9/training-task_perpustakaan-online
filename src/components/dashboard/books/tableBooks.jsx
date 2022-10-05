@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 // Import Slice
 import { booksSelectors, deleteBook } from '../../../features/booksSlice';
-import { deleteTransaction } from '../../../features/transactionsSlice';
 import { alertAction } from "../../../features/alertsSlice";
 
 // Import Component
@@ -16,6 +15,20 @@ export { TableBooks };
 function TableBooks({searchValue}) {
     const dispatch = useDispatch();
     const books = useSelector(booksSelectors.selectAll);
+    
+    // Sorting books by key of status "Borrowed"
+    const sorted = books.sort((a, b) => {
+        let fa = a.status
+        let fb = b.status
+
+        if (fa == "Borrowed" && fb == "Available") {
+            return -1
+        }
+        if (fa == "Available" && fb == "Borrowed") {
+            return 1
+        }
+        return 0
+    })
 
     // Filtering data based on key by matching the search value
     const searchFilter = books.filter(book => 
@@ -40,9 +53,6 @@ function TableBooks({searchValue}) {
         id: null,
     })
 
-    // Initial State for transaction
-    const [transaction, setTransaction] = useState('')
-
     // This will show the Cofirmation Box
     const handleDelete = (book) => {
         setPopup({
@@ -50,22 +60,12 @@ function TableBooks({searchValue}) {
             paramBook: book.title,
             id: book.id,
         })
-        if (book.trsId) {
-            setTransaction(book.trsId)
-        }
     }
     
     // This will perform the deletion
     const handleDeleteTrue = () => {
         if (popup.show && popup.id) {
             dispatch(deleteBook(popup.id))
-            if (transaction) {
-                transaction.forEach(a => {
-                    console.log(a);
-                    dispatch(deleteTransaction(a))
-                })
-            }
-            // Action for alert state when success delete book data
             dispatch(
                 alertAction.createAlert({
                     message: "Successfully Deleted Book Data!",
@@ -104,9 +104,9 @@ function TableBooks({searchValue}) {
                             <td>{book.typeBook}</td>
                             <td>
                                 {/* Conditional rendering for Status Book based on book.status */}
-                                {(book.status === "Tersedia" || book.status === undefined) 
-                                ? <span className="badge text-bg-success">Tersedia</span>
-                                : <span className="badge text-bg-danger">Dipinjam</span>}
+                                {(book.status === "Available" || book.status === undefined) 
+                                ? <span className="badge text-bg-success">Available</span>
+                                : <span className="badge text-bg-danger">Borrowed</span>}
                             </td>
                             <td className='text-center'>
                                 {/* Link Detail */}
@@ -120,7 +120,7 @@ function TableBooks({searchValue}) {
                                 </Link>
 
                                 {/* Link Delete with conditional rendering based on book.status */}
-                                {(book.status === "Tersedia" || book.status === undefined )
+                                {(book.status === "Available" || book.status === undefined )
                                 ?
                                 // <Link onClick={() => dispatch(deleteBook(book.id))}>Delete</Link>
                                 <Link onClick={() => handleDelete(book)} data-bs-toggle="modal" data-bs-target="#staticBackdrop" className='text-decoration-none d-sm-block d-md-block d-lg-inline'>

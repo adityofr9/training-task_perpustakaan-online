@@ -9,7 +9,7 @@
       "source": "Collection",
       "oldBook": "No",
       "bookshelf": "Philosophy & Psychology",
-      "status": "Dipinjam",
+      "status": "Borrowed",
       "inputDate": "2022-09-22",
       "id": 2,
       "transaction": [
@@ -40,7 +40,7 @@
       "source": "Brand New",
       "oldBook": "No",
       "bookshelf": "Technology",
-      "status": "Tersedia",
+      "status": "Available",
       "inputDate": "2022-09-26",
       "id": 3,
       "transaction": []
@@ -54,7 +54,7 @@
       "source": "",
       "oldBook": "No",
       "bookshelf": "Technology",
-      "status": "Tersedia",
+      "status": "Available",
       "inputDate": "2022-09-29",
       "id": 4,
       "transaction": []

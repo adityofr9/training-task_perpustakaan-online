@@ -9,7 +9,7 @@
       "source": "Brand New",
       "oldBook": "No",
       "bookshelf": "Technology",
-      "status": "Tersedia",
+      "status": "Borrowed",
       "inputDate": "2022-09-19",
       "id": 1
     },
@@ -22,7 +22,7 @@
       "source": "Brand New",
       "oldBook": "No",
       "bookshelf": "Technology",
-      "status": "Tersedia",
+      "status": "Available",
       "inputDate": "2022-09-19",
       "id": 2
     },
@@ -35,7 +35,7 @@
       "source": "Brand New",
       "oldBook": "No",
       "bookshelf": "Technology",
-      "status": "Tersedia",
+      "status": "Borrowed",
       "inputDate": "2022-09-19",
       "id": 3
     },
@@ -48,7 +48,7 @@
       "source": "Collection",
       "oldBook": "No",
       "bookshelf": "Philosophy & Psychology",
-      "status": "Tersedia",
+      "status": "Available",
       "inputDate": "2022-09-20",
       "id": 4
     },
@@ -61,7 +61,7 @@
       "source": "Collection",
       "oldBook": "No",
       "bookshelf": "Philosophy & Psychology",
-      "status": "Tersedia",
+      "status": "Available",
       "inputDate": "2022-10-04",
       "id": 5
     },
@@ -74,7 +74,7 @@
       "source": "Collection",
       "oldBook": "No",
       "bookshelf": "Comics & Novels",
-      "status": "Tersedia",
+      "status": "Available",
       "inputDate": "2022-09-24",
       "id": 6
     },
@@ -87,7 +87,7 @@
       "source": "Collection",
       "oldBook": "No",
       "bookshelf": "Comics & Novels",
-      "status": "Tersedia",
+      "status": "Available",
       "inputDate": "2022-09-24",
       "id": 7
     },
@@ -100,10 +100,60 @@
       "source": "Donation",
       "oldBook": "Yes",
       "bookshelf": "Comics & Novels",
-      "status": "Tersedia",
+      "status": "Borrowed",
       "inputDate": "2022-09-22",
       "id": 8
+    },
+    {
+      "title": "sds",
+      "author": "ds",
+      "publisher": "CCC",
+      "yearPubc": "1969",
+      "typeBook": "Literature",
+      "source": "",
+      "oldBook": "No",
+      "bookshelf": "Literature",
+      "status": "Borrowed",
+      "inputDate": "2022-10-05",
+      "id": 9
     }
   ],
-  "transactions": []
+  "transactions": [
+    {
+      "bookId": 8,
+      "borrowerName": "Alpha",
+      "borrowerAge": "12",
+      "borrowDate": "2022-10-05",
+      "returnEstimate": "2022-10-12",
+      "returnedDate": "",
+      "id": 1
+    },
+    {
+      "bookId": 3,
+      "borrowerName": "Albert",
+      "borrowerAge": "22",
+      "borrowDate": "2022-09-28",
+      "returnEstimate": "2022-10-19",
+      "returnedDate": "",
+      "id": 2
+    },
+    {
+      "bookId": 1,
+      "borrowerName": "Maggie",
+      "borrowerAge": "19",
+      "borrowDate": "2022-09-28",
+      "returnEstimate": "2022-10-12",
+      "returnedDate": "",
+      "id": 3
+    },
+    {
+      "bookId": 9,
+      "borrowerName": "Ken",
+      "borrowerAge": "11",
+      "borrowDate": "2022-10-05",
+      "returnEstimate": "2022-10-13",
+      "returnedDate": "",
+      "id": 4
+    }
+  ]
 }

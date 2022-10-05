@@ -42,17 +42,17 @@ export const updateTransaction = createAsyncThunk(
 )
 
 // function for Delete selected data from API(JSON Server)
-export const deleteTransaction = createAsyncThunk(
-  "transactions/deleteTransaction",
-  async(id) => {
-    try {
-      await axios.delete(`http://localhost:8000/transactions/${id}`);
-      return id;
-    } catch (error) {
-      console.error(error)
-    }
-  }
-)
+// export const deleteTransaction = createAsyncThunk(
+//   "transactions/deleteTransaction",
+//   async(id) => {
+//     try {
+//       await axios.delete(`http://localhost:8000/transactions/${id}`);
+//       return id;
+//     } catch (error) {
+//       console.error(error)
+//     }
+//   }
+// )
 
 const transactionEntity = createEntityAdapter({
   selectId: (transactions) => transactions.id
