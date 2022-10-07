@@ -17,3 +17,66 @@ export const estimateMin = (borrowDate) => {
         return new Date(estimateDay).toISOString().split("T")[0]
     }
 }
+
+
+// Sorting Books Table based on book status
+export const sortedStatus = (books) => {
+    // First sort criteria by input date
+    const sorted = books.sort((a, b) => {
+        return new Date(b.inputDate) - new Date(a.inputDate)
+    })
+
+    // Second sort criteria by book status and input date
+    sorted.sort((a, b) => {
+        let fa = a.status
+        let fb = b.status
+
+        if (fa === "Borrowed" && fb === "Available") {
+            return -1
+        }
+        if (fa === "Available" && fb === "Borrowed") {
+            return 1
+        }
+        return 0
+    })
+}
+
+
+// Sorting Transaction Table based on return status and lend date
+export const sortedReturn = (transaction) => {
+    // First sort criteria by lend date
+    const sorted = transaction.sort((a, b) => {
+        return new Date(b.borrowDate) - new Date(a.borrowDate)
+    })
+
+    // First sort criteria by Returned Book Status
+    sorted.sort((a, b) => {
+        let fa = a.returnedDate
+        let fb = b.returnedDate
+
+        if (fa === "" && fb !== "") {
+            return -1
+        }
+        if (fa !== "" && fb === "") {
+            return 1
+        }
+        return 0
+    })
+
+    // This logic if you want to sort by Returned Date
+    // Second sort criteria by Returned Date
+    // const sorted = status.sort((a,b) => {
+    //     let sa = a.returnedDate
+    //     let sb = b.returnedDate
+
+    //     if (sa !== "" && sb !== "") {
+    //         return new Date(sb) - new Date(sa)
+    //     }
+
+    //     if (sa === "" && sb === "") {
+    //         return 0
+    //     }
+    // })
+    // return sorted
+
+}

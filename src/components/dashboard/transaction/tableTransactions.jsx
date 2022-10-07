@@ -7,6 +7,8 @@ import { booksSelectors, updateBook } from '../../../features/booksSlice';
 import { transactionsSelectors, updateTransaction, getTransactions } from '../../../features/transactionsSlice';
 import { alertAction } from "../../../features/alertsSlice";
 
+import { sortedReturn } from '../../../utils/fake-backend';
+
 // Export Functional Component
 export { TableTransactions };
 
@@ -80,6 +82,8 @@ function TableTransactions({searchValue}) {
         }
     }
 
+    sortedReturn(datas())
+
     return(
         <>
             <table className="table table-bordered">
@@ -106,12 +110,12 @@ function TableTransactions({searchValue}) {
                             <th scope="row">{index + 1}</th>
                             <td className='col-3'>{refbook(transaction.bookId)}</td>
                             <td>{transaction.borrowerName}</td>
-                            <td>{transaction.borrowDate}</td>
-                            <td>{transaction.returnEstimate}</td>
-                            <td>
-                                {transaction.returnedDate && transaction.returnedDate}
+                            <td className='text-center align-middle'>{transaction.borrowDate}</td>
+                            <td className='text-center align-middle'>{transaction.returnEstimate}</td>
+                            <td className='text-center align-middle'>
+                                {transaction.returnedDate ? transaction.returnedDate : "-"}
                             </td>
-                            <td className='text-center'>
+                            <td className='text-center align-middle'>
                                 {/* Link Delete with conditional rendering based on book.status */}
                                 {transaction.returnedDate === ""
                                 ? <Link onClick={() => handleReturn(transaction)} type="button" className='text-decoration-none d-sm-block d-md-block d-lg-inline'>

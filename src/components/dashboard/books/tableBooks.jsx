@@ -8,6 +8,7 @@ import { alertAction } from "../../../features/alertsSlice";
 
 // Import Component
 import { DeletePopup } from '../../deletePopup';
+import { sortedStatus } from '../../../utils/fake-backend';
 
 // Export Functional Component
 export { TableBooks };
@@ -17,19 +18,8 @@ function TableBooks({searchValue}) {
     const books = useSelector(booksSelectors.selectAll);
     
     // Sorting books by key of status "Borrowed"
-    const sorted = books.sort((a, b) => {
-        let fa = a.status
-        let fb = b.status
-
-        if (fa == "Borrowed" && fb == "Available") {
-            return -1
-        }
-        if (fa == "Available" && fb == "Borrowed") {
-            return 1
-        }
-        return 0
-    })
-
+    sortedStatus(books)
+    
     // Filtering data based on key by matching the search value
     const searchFilter = books.filter(book => 
         book.title.toLowerCase().includes(searchValue)
