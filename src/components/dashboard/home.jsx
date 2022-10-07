@@ -21,11 +21,11 @@ function Home() {
         <>
             {/* Navbar Component */}
             <Navbar />
-            <div className="container-fluid">
+            <div className="container-fluid min-vh-100">
                 <div className="row">
                     {/* Sidebar Component */}
                     <Sidebar />
-                    <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                    <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4 pb-3">
                         {/* Route for Content Component */}                  
                         <Routes>
                             <Route path="/"  element={<Dashboard />}/>
@@ -39,6 +39,12 @@ function Home() {
                     </main>
                 </div>
             </div>
+            {/* Footer */}
+            <footer className="footer position-sticky py-1 border-top" style={{zIndex: 1100}}>
+                <div className="container text-center">
+                    <span className="text-light fw-semibold">&copy; 2022 Copyright HONLINE</span>
+                </div>
+            </footer>
         </>
     )
 }
