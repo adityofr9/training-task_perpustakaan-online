@@ -9,7 +9,7 @@ export { Sidebar };
 
 function Sidebar() {
     return(
-        <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-md-block sidebar collapse">
+        <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-md-block sidebar collapse shadow">
             <div className="position-sticky pt-3">
                 <ul className="nav flex-column">
                     <li className="nav-item">

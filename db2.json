@@ -9,7 +9,7 @@
       "source": "Brand New",
       "oldBook": "No",
       "bookshelf": "Technology",
-      "status": "Borrowed",
+      "status": "Available",
       "inputDate": "2022-09-19",
       "id": 1
     },
@@ -35,7 +35,7 @@
       "source": "Brand New",
       "oldBook": "No",
       "bookshelf": "Technology",
-      "status": "Borrowed",
+      "status": "Available",
       "inputDate": "2022-09-19",
       "id": 3
     },
@@ -105,55 +105,64 @@
       "id": 8
     },
     {
-      "title": "sds",
-      "author": "ds",
-      "publisher": "CCC",
-      "yearPubc": "1969",
-      "typeBook": "Literature",
-      "source": "",
+      "title": "The Adventures of Sherlock Holmes, and Other Stories Leather Bound",
+      "author": "Sir Arthur Conan Doyle, Michael A. Cramer PhD",
+      "publisher": "Canterbury Classics",
+      "yearPubc": "2011",
+      "typeBook": "Mystery, Thriller & Suspense",
+      "source": "Donation",
       "oldBook": "No",
       "bookshelf": "Literature",
       "status": "Borrowed",
-      "inputDate": "2022-10-05",
+      "inputDate": "2022-10-07",
       "id": 9
     }
   ],
   "transactions": [
     {
-      "bookId": 8,
+      "bookId": 6,
       "borrowerName": "Alpha",
-      "borrowerAge": "12",
-      "borrowDate": "2022-10-05",
-      "returnEstimate": "2022-10-12",
-      "returnedDate": "",
+      "borrowerAge": "18",
+      "borrowDate": "2022-09-12",
+      "returnEstimate": "2022-09-19",
+      "returnedDate": "2022-10-07",
       "id": 1
     },
     {
-      "bookId": 3,
-      "borrowerName": "Albert",
-      "borrowerAge": "22",
-      "borrowDate": "2022-09-28",
-      "returnEstimate": "2022-10-19",
-      "returnedDate": "",
+      "bookId": 7,
+      "borrowerName": "Alpha",
+      "borrowerAge": "18",
+      "borrowDate": "2022-09-12",
+      "returnEstimate": "2022-09-19",
+      "returnedDate": "2022-10-07",
       "id": 2
     },
     {
-      "bookId": 1,
-      "borrowerName": "Maggie",
-      "borrowerAge": "19",
+      "bookId": 9,
+      "borrowerName": "Beta",
+      "borrowerAge": "20",
       "borrowDate": "2022-09-28",
-      "returnEstimate": "2022-10-12",
+      "returnEstimate": "2022-10-05",
       "returnedDate": "",
       "id": 3
     },
     {
-      "bookId": 9,
-      "borrowerName": "Ken",
-      "borrowerAge": "11",
-      "borrowDate": "2022-10-05",
-      "returnEstimate": "2022-10-13",
-      "returnedDate": "",
+      "bookId": 5,
+      "borrowerName": "Charlie",
+      "borrowerAge": "24",
+      "borrowDate": "2022-09-30",
+      "returnEstimate": "2022-10-14",
+      "returnedDate": "2022-10-07",
       "id": 4
+    },
+    {
+      "bookId": 8,
+      "borrowerName": "Delta",
+      "borrowerAge": "27",
+      "borrowDate": "2022-10-07",
+      "returnEstimate": "2022-10-14",
+      "returnedDate": "",
+      "id": 5
     }
   ]
 }
