@@ -11,7 +11,7 @@ function Login() {
             <div className="modal-dialog" role="document">
                 <div className="modal-content modal-content-login rounded-4 shadow">
                     <div className="modal-header d-flex flex-column p-5 pb-4 border-bottom-0">
-                        <img src={process.env.PUBLIC_URL + '/assets/logonobg.png'} className="mx-auto d-block" alt='logo' />
+                        <img src={process.env.PUBLIC_URL + '/assets/logonobg.png'} className="mx-auto d-block loginImg" alt='logo' />
                         <h2 className="fw-bold mt-3 mb-0 mx-auto">Welcome Back!</h2>
                     </div>
                     <div className="modal-body p-5 pt-0">
